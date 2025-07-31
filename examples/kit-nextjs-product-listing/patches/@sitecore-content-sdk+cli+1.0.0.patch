@@ -1,15 +1,17 @@
 diff --git a/node_modules/@sitecore-content-sdk/cli/dist/cjs/cli.js b/node_modules/@sitecore-content-sdk/cli/dist/cjs/cli.js
-index b689d86..aca3137 100644
+index b689d86..c7f7df9 100644
 --- a/node_modules/@sitecore-content-sdk/cli/dist/cjs/cli.js
 +++ b/node_modules/@sitecore-content-sdk/cli/dist/cjs/cli.js
-@@ -64,6 +64,9 @@ function cli(commands) {
+@@ -64,6 +64,10 @@ function cli(commands) {
          })
              .demandCommand(1, 'You need to specify a command to run')
              .strict();
+-        yield appCommands.argv;
 +
-+        console.log('---------> AWAIT ARGV START');
-         yield appCommands.argv;
-+        console.log('---------> AWAIT ARGV END');
++        console.log('---------> AWAIT PARSE START');
++        // yield appCommands.argv;
++        appCommands.parse();
++        console.log('---------> AWAIT PARSE END');
      });
  }
 diff --git a/node_modules/@sitecore-content-sdk/cli/dist/cjs/scripts/project/build.js b/node_modules/@sitecore-content-sdk/cli/dist/cjs/scripts/project/build.js
