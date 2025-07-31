@@ -1,33 +1,13 @@
-diff --git a/node_modules/@sitecore-content-sdk/cli/dist/cjs/cli.js b/node_modules/@sitecore-content-sdk/cli/dist/cjs/cli.js
-index b689d86..b1dbd08 100644
---- a/node_modules/@sitecore-content-sdk/cli/dist/cjs/cli.js
-+++ b/node_modules/@sitecore-content-sdk/cli/dist/cjs/cli.js
-@@ -64,6 +64,7 @@ function cli(commands) {
-         })
-             .demandCommand(1, 'You need to specify a command to run')
-             .strict();
-+
-         yield appCommands.argv;
-     });
- }
 diff --git a/node_modules/@sitecore-content-sdk/cli/dist/cjs/scripts/project/build.js b/node_modules/@sitecore-content-sdk/cli/dist/cjs/scripts/project/build.js
-index de8d2cb..5f057e6 100644
+index de8d2cb..bf60efe 100644
 --- a/node_modules/@sitecore-content-sdk/cli/dist/cjs/scripts/project/build.js
 +++ b/node_modules/@sitecore-content-sdk/cli/dist/cjs/scripts/project/build.js
-@@ -31,10 +31,16 @@ exports.builder = {
- function handler(argv) {
-     return __awaiter(this, void 0, void 0, function* () {
-         const cliConfig = (0, load_config_1.default)(argv.config);
-+        console.log('COMMANDS', cliConfig.build.commands);
-         if (cliConfig.build && Array.isArray(cliConfig.build.commands)) {
-             for (const command of cliConfig.build.commands) {
+@@ -36,5 +36,8 @@ function handler(argv) {
                  yield command();
-+                console.log('COMMAND IS EXECUTED');
              }
          }
 +
-+        console.log('CLI BUILD COMMAND END');
-+
++        // Exit the process to avoid hanging the process by custom build commands
 +        process.exit(0);
      });
  }
