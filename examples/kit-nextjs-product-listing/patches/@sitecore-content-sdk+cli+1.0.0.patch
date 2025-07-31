@@ -1,24 +1,20 @@
 diff --git a/node_modules/@sitecore-content-sdk/cli/dist/cjs/cli.js b/node_modules/@sitecore-content-sdk/cli/dist/cjs/cli.js
-index b689d86..dca524d 100644
+index b689d86..b1dbd08 100644
 --- a/node_modules/@sitecore-content-sdk/cli/dist/cjs/cli.js
 +++ b/node_modules/@sitecore-content-sdk/cli/dist/cjs/cli.js
-@@ -64,6 +64,10 @@ function cli(commands) {
+@@ -64,6 +64,7 @@ function cli(commands) {
          })
              .demandCommand(1, 'You need to specify a command to run')
              .strict();
--        yield appCommands.argv;
 +
-+        console.log('---------> AWAIT PARSE START');
-+        yield appCommands.parse();
-+        console.log('---------> AWAIT PARSE END AND EXIT 0');
-+        process.exit(0);
+         yield appCommands.argv;
      });
  }
 diff --git a/node_modules/@sitecore-content-sdk/cli/dist/cjs/scripts/project/build.js b/node_modules/@sitecore-content-sdk/cli/dist/cjs/scripts/project/build.js
-index de8d2cb..46136ae 100644
+index de8d2cb..5f057e6 100644
 --- a/node_modules/@sitecore-content-sdk/cli/dist/cjs/scripts/project/build.js
 +++ b/node_modules/@sitecore-content-sdk/cli/dist/cjs/scripts/project/build.js
-@@ -31,9 +31,11 @@ exports.builder = {
+@@ -31,10 +31,16 @@ exports.builder = {
  function handler(argv) {
      return __awaiter(this, void 0, void 0, function* () {
          const cliConfig = (0, load_config_1.default)(argv.config);
@@ -29,4 +25,9 @@ index de8d2cb..46136ae 100644
 +                console.log('COMMAND IS EXECUTED');
              }
          }
++
++        console.log('CLI BUILD COMMAND END');
++
++        process.exit(0);
      });
+ }
