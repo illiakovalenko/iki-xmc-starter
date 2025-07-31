@@ -1,5 +1,5 @@
 diff --git a/node_modules/@sitecore-content-sdk/cli/dist/cjs/cli.js b/node_modules/@sitecore-content-sdk/cli/dist/cjs/cli.js
-index b689d86..c7f7df9 100644
+index b689d86..dca524d 100644
 --- a/node_modules/@sitecore-content-sdk/cli/dist/cjs/cli.js
 +++ b/node_modules/@sitecore-content-sdk/cli/dist/cjs/cli.js
 @@ -64,6 +64,10 @@ function cli(commands) {
@@ -9,9 +9,9 @@ index b689d86..c7f7df9 100644
 -        yield appCommands.argv;
 +
 +        console.log('---------> AWAIT PARSE START');
-+        // yield appCommands.argv;
-+        appCommands.parse();
-+        console.log('---------> AWAIT PARSE END');
++        yield appCommands.parse();
++        console.log('---------> AWAIT PARSE END AND EXIT 0');
++        process.exit(0);
      });
  }
 diff --git a/node_modules/@sitecore-content-sdk/cli/dist/cjs/scripts/project/build.js b/node_modules/@sitecore-content-sdk/cli/dist/cjs/scripts/project/build.js
