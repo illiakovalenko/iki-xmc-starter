@@ -1,0 +1,13 @@
+diff --git a/node_modules/@sitecore-content-sdk/nextjs/dist/cjs/tools/codegen/utils.js b/node_modules/@sitecore-content-sdk/nextjs/dist/cjs/tools/codegen/utils.js
+index b11cc10..bb3b37c 100644
+--- a/node_modules/@sitecore-content-sdk/nextjs/dist/cjs/tools/codegen/utils.js
++++ b/node_modules/@sitecore-content-sdk/nextjs/dist/cjs/tools/codegen/utils.js
+@@ -236,6 +236,8 @@ const sendCode = (_a) => __awaiter(void 0, [_a], void 0, function* ({ file, toke
+                 },
+             }),
+         });
++
++        console.log('RESPONSE', response.status, response.status, file.path)
+         if (!response.ok) {
+             console.error(chalk_1.default.red(`Failed to send extracted code from ${file.path}: ${response.statusText}`));
+             core_1.debug.http('Error details: %o', {
